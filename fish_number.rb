@@ -12,22 +12,30 @@ end
 
 def test_fisher(num)
     cube = num*num*num
-    print "number in cube = #{cube} \n"
     arr_mult =  test_multiplicator(num)
-    print "multiplicators: "
     sum = 1
+    str =''
     arr_mult.each do |val|
-	print " #{val} "
+	str= str + "*#{val}"
 	sum = sum * val 
     end
-    puts ''
+    res = ''
     if cube == sum
-	puts "This is Fisher Number"
+	res = "This is Fisher Number"
     else
-	puts "This don't FisherNumber"
+	res = "This don't FisherNumber"
     end
+    return arr = {'cube' => cube,
+		  'str'  => str,
+		  'sum'  => sum,
+		  'res'  => res,
+		}
 end
 
 print "Enter Number: "
 num = gets.strip.to_i
-test_fisher(num)
+arr = test_fisher(num)
+puts '----------------'
+puts "Number #{num} in cube = #{arr['cube']}"
+puts "Multiplicators: #{arr['str']} = #{arr['sum']}"
+puts arr['res']
